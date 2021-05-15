@@ -10,7 +10,11 @@ variable "project" {
   type        = string
 }
 
-
+variable "name_prefix" {
+  default     = "vpc"
+  description = "A name prefix used in resource names to ensure uniqueness across a project."
+  type        = string
+}
 
 
 
