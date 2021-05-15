@@ -16,5 +16,25 @@ variable "name_prefix" {
   type        = string
 }
 
+variable "name" {
+  default     = "toggl-track-db"
+  description = "The name of the Cloud SQL resources"
+  type        = string
+}
+
+variable "database_version" {
+  default     = "13"
+  description = "The database version to use"
+  type        = string
+}
+
+variable "zone" {
+  default     = "southamerica-east1-a"
+  type        = string
+  description = "The zone for the master instance"
+}
+
+
+
 
 
