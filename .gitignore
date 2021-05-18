@@ -33,3 +33,5 @@ tfstate
 *.zip
 .terraform.lock.hcl
 dev.log
+
+terraform-key.json
