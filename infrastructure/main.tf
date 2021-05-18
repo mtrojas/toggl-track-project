@@ -9,7 +9,6 @@ terraform {
   backend "gcs" {
     bucket      = "toggl-track-project-tfstate"
     prefix      = "tfstate"
-    credentials = "terraform-key.json"
 
   }
 }
