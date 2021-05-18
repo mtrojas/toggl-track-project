@@ -7,8 +7,8 @@ provider "google" {
 
 terraform {
   backend "gcs" {
-    bucket      = "toggl-track-project-tfstate"
-    prefix      = "tfstate"
+    bucket = "toggl-track-project-tfstate"
+    prefix = "tfstate"
 
   }
 }
