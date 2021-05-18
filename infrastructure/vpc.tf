@@ -15,7 +15,7 @@ resource "google_compute_subnetwork" "public_subnetwork" {
 }
 
 resource "google_compute_firewall" "fw_web" {
-  name = "fw-web"
+  name    = "fw-web"
   network = google_compute_network.vpc_network.name
 
   allow {
@@ -24,11 +24,11 @@ resource "google_compute_firewall" "fw_web" {
 
   allow {
     protocol = "tcp"
-    ports = ["80", "443"]
+    ports    = ["80", "443"]
   }
 
-  source_tags = [ "web" ]
-  source_ranges = [ "0.0.0.0/0" ]
+  source_tags   = ["web"]
+  source_ranges = ["0.0.0.0/0"]
 }
 
 //https://registry.terraform.io/modules/gruntwork-io/network/google/latest/submodules/vpc-network
