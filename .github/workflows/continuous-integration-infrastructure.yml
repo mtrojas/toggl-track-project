@@ -11,9 +11,9 @@ jobs:
     name: CI Infrastructure
     runs-on: ubuntu-latest
     env:
-      GCS_SA_KEY: ${{ secrets.GCS_SA_KEY }}
+      GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
       GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-      GOOGLE_BACKEND_CREDENTIALS: ${{ secrets.GCS_SA_KEY }}
+      GOOGLE_BACKEND_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
 
     steps:
       # Checkout the repository to the GitHub Actions runner
