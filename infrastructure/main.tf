@@ -1,5 +1,4 @@
 provider "google" {
-  credentials = file("/Users/mtrojas/Documents/terraform-sa.json")
   project     = var.project
   region      = var.region
   zone        = var.zone
