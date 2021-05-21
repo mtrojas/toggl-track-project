@@ -8,11 +8,12 @@ data "google_compute_zones" "available" {
 module "sql-db_postgresql" {
   source  = "GoogleCloudPlatform/sql-db/google//modules/postgresql"
   version = "5.0.1"
-  # insert the 6 required variables here
+  count = length(data.google_compute_zones.available.names)
+
   name             = var.name
   database_version = var.database_version
   project_id       = var.project
-  zone             = data.google_compute_zones.available.names[0]
+  zone             = data.google_compute_zones.available.names[count.index]
   db_name          = "toggltrack"
   user_name        = "toggl"
 }
