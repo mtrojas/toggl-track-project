@@ -22,17 +22,11 @@ variable "name" {
   type        = string
 }
 
-variable "database_version" {
-  default     = "13"
-  description = "The database version to use"
+variable "db_password" {
+  description = "Database password"
   type        = string
 }
 
-variable "zone" {
-  default     = "us-east1-c"
-  type        = string
-  description = "The zone for the master instance"
-}
 
 
 
