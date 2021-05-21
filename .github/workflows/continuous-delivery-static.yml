@@ -7,7 +7,7 @@ on:
 
 defaults:
   run:
-    working-directory: app/public
+    working-directory: app
 
 jobs:
   continuous-delivery-static:
@@ -30,4 +30,4 @@ jobs:
 
       - name: Deploy static assets to storage
         run: |-
-          gsutil -m rsync -R output gs://$GCP_BUCKET
+          gsutil -m rsync -R ./public gs://$GCP_BUCKET
