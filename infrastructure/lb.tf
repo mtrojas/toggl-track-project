@@ -113,7 +113,7 @@ resource "google_storage_bucket" "static" {
 resource "google_compute_backend_bucket" "static" {
   project = var.project
 
-  name        = "${var.name}-backend-bucket"
+  name        = "toggl-backend-bucket"
   bucket_name = google_storage_bucket.static.name
 }
 
