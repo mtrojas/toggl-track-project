@@ -8,7 +8,7 @@ data "google_compute_zones" "available" {
 module "sql-db_postgresql" {
   source  = "GoogleCloudPlatform/sql-db/google//modules/postgresql"
   version = "5.0.1"
-  count = length(data.google_compute_zones.available.names)
+  count   = length(data.google_compute_zones.available.names)
 
   name             = var.name
   database_version = var.database_version
