@@ -5,12 +5,15 @@ resource "google_sql_database_instance" "db" {
   name             = "postgres-db-instance"
   database_version = "POSTGRES_11"
   region           = var.region
+  depends_on       = [google_service_networking_connection.private_vpc_connection]
 
   settings {
-    tier = "db-f1-micro"
+    tier              = "db-f1-micro"
+    availability_type = "REGIONAL"
+    disk_size         = 10
     ip_configuration {
       ipv4_enabled    = false
-      private_network = google_compute_network.vpc_network.id
+      private_network = google_compute_network.vpc_network.self_link
     }
   }
 }

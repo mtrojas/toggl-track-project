@@ -1,9 +1,11 @@
 name: "Continuous Delivery Static"
 
-on:
-  push:
-    branches:
-      - master
+on: workflow_dispatch
+
+# on:
+#   push:
+#     branches:
+#       - master
 
 defaults:
   run:
