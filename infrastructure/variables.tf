@@ -4,6 +4,12 @@ variable "region" {
   type        = string
 }
 
+variable "zone" {
+  default     = "us-east1-b"
+  description = "The availability zone to create the sample compute instances in. Must within the region specified in 'var.region'"
+  type        = string
+}
+
 variable "project" {
   default     = "toggl-track-project"
   description = "The project ID for the network"
@@ -16,23 +22,11 @@ variable "name_prefix" {
   type        = string
 }
 
-variable "name" {
-  default     = "toggl-track-db"
-  description = "The name of the Cloud SQL resources"
+variable "db_password" {
+  description = "Database password"
   type        = string
 }
 
-variable "database_version" {
-  default     = "13"
-  description = "The database version to use"
-  type        = string
-}
-
-variable "zone" {
-  default     = "us-east1-c"
-  type        = string
-  description = "The zone for the master instance"
-}
 
 
 
