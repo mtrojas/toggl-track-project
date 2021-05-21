@@ -1,5 +1,5 @@
 variable "region" {
-  default     = "southamerica-east1"
+  default     = "us-east1"
   description = "The region for subnetworks in the network"
   type        = string
 }
@@ -29,7 +29,7 @@ variable "database_version" {
 }
 
 variable "zone" {
-  default     = "southamerica-east1-a"
+  default     = "us-east1-c"
   type        = string
   description = "The zone for the master instance"
 }
