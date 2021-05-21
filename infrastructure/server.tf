@@ -1,7 +1,7 @@
 resource "google_compute_instance" "api_server" {
-  name         = "server"
-  machine_type = "e2-standard-4"
-  tags         = ["web"]
+  name                    = "server"
+  machine_type            = "e2-standard-4"
+  tags                    = ["web"]
   metadata_startup_script = file("startup.sh")
 
   boot_disk {
