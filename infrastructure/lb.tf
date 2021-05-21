@@ -285,7 +285,7 @@ resource "google_compute_address" "static_ip" {
 variable "name" {
   description = "Name for the load balancer forwarding rule and prefix for supporting resources."
   type        = string
-  default     = "http-multi-backend"
+  default     = "toggl-track-project.com"
 }
 
 variable "custom_labels" {
