@@ -12,18 +12,16 @@ resource "google_compute_subnetwork" "public_subnetwork" {
 }
 
 resource "google_compute_firewall" "fw_web" {
+  project = var.project
   name    = "fw-web"
   network = google_compute_network.vpc_network.name
 
   allow {
-    protocol = "icmp"
-  }
-
-  allow {
     protocol = "tcp"
-    ports    = ["80", "443"]
+    ports    = ["80", "443", "5000"]
   }
 
   source_tags   = ["web"]
-  source_ranges = ["0.0.0.0/0"]
+  target_tags   = ["web"]
+  source_ranges = ["130.211.0.0/22", "35.191.0.0/16"]
 }
