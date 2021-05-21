@@ -12,7 +12,7 @@ module "sql-db_postgresql" {
   name             = var.name
   database_version = var.database_version
   project_id       = var.project
-  zone             = data.google_compute_zones.available.names[count.index]
+  zone             = data.google_compute_zones.available.names[0]
   db_name          = "toggltrack"
   user_name        = "toggl"
 }
