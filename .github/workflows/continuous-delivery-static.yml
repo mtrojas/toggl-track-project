@@ -1,0 +1,33 @@
+name: "Continuous Delivery Static"
+
+on:
+  push:
+    branches:
+      - master
+
+defaults:
+  run:
+    working-directory: app/public
+
+jobs:
+  continuous-delivery-static:
+    name: CD Static
+    runs-on: ubuntu-latest
+    env:
+      GCP_BUCKET: ${{ secrets.GCP_BUCKET }}
+
+    steps:
+      # Checkout the repository to the GitHub Actions runner
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Set up Cloud SDK
+        uses: google-github-actions/setup-gcloud@master
+        with:
+          project_id: ${{ secrets.GCP_PROJECT_ID }}
+          service_account_key: ${{ secrets.GCP_SA_KEY }}
+          export_default_credentials: true
+
+      - name: Deploy static assets to storage
+        run: |-
+          gsutil -m rsync -R output gs://$GCP_BUCKET
