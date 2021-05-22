@@ -50,7 +50,7 @@ provider "google-beta" {
 # ------------------------------------------------------------------------------
 
 module "lb" {
-  source                = "./modules/http-load-balancer"
+  source                = "gruntwork-io/load-balancer/google//modules/http-load-balancer"
   name                  = var.name
   project               = var.project
   url_map               = google_compute_url_map.urlmap.self_link
@@ -140,7 +140,7 @@ resource "google_compute_health_check" "default" {
 resource "google_storage_bucket" "static" {
   project = var.project
 
-  name          = "${var.name}-bucket"
+  name          = "${var.name}-bucket-123456"
   location      = var.static_content_bucket_location
   storage_class = "MULTI_REGIONAL"
 
@@ -165,6 +165,7 @@ resource "google_compute_backend_bucket" "static" {
 
   name        = "${var.name}-backend-bucket"
   bucket_name = google_storage_bucket.static.name
+  enable_cdn  = true
 }
 
 # ------------------------------------------------------------------------------
@@ -283,7 +284,7 @@ resource "google_compute_instance" "api" {
   }
 
   # Make sure we have the flask application running
-  metadata_startup_script = file("${path.module}/examples/shared/startup_script.sh")
+  metadata_startup_script = file("startup.sh")
 
   # Launch the instance in the default subnetwork
   network_interface {
