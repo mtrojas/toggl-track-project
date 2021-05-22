@@ -2,18 +2,14 @@
 // The solution requires a single PostgreSQL instance running on 9.6(or newer). Feel free to choose between provisioning it in Compute Engine(Use the Linux distribution of your choice) or Cloud SQL.
 // The API requires a database and a user. However, it creates all required tables internally. If Compute Engine is chosen don’t forget to register it in Consul and add a health check.
 resource "google_sql_database_instance" "db" {
-  name             = "postgres-db-instance"
+  name             = "postgres-db-instance-toggltrack"
   database_version = "POSTGRES_11"
   region           = var.region
-  depends_on       = [google_service_networking_connection.private_vpc_connection]
 
   settings {
-    tier              = "db-f1-micro"
-    availability_type = "REGIONAL"
-    disk_size         = 10
+    tier = "db-f1-micro"
     ip_configuration {
-      ipv4_enabled    = false
-      private_network = google_compute_network.vpc_network.self_link
+      ipv4_enabled = true
     }
   }
 }
