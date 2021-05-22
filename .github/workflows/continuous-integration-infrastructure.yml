@@ -11,9 +11,6 @@ jobs:
     name: CI Infrastructure
     runs-on: ubuntu-latest
     env:
-      GCP_SA_KEY: ${{ secrets.GCP_SA_KEY }}
-      GCP_PROJECT_ID: ${{ secrets.GCP_PROJECT_ID }}
-      TF_VAR_db_password: ${{ secrets.DB_PASSWORD }}
       GOOGLE_BACKEND_CREDENTIALS: ${{ secrets.GCP_SA_KEY }}
 
     steps:
