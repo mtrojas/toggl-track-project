@@ -1,7 +1,5 @@
-# ---------------------------------------------------------------------------------------------------------------------
-# REQUIRED PARAMETERS
-# These variables are expected to be passed in by the operator
-# ---------------------------------------------------------------------------------------------------------------------
+
+# Required parameters
 
 variable "project" {
   default     = "toggl-track-project"
@@ -17,14 +15,11 @@ variable "region" {
 
 variable "zone" {
   default     = "us-west1-b"
-  description = "The availability zone to create the sample compute instances in. Must within the region specified in 'var.region'"
+  description = "The availability zone to create the sample compute instances in. Must be within the region specified in 'var.region'"
   type        = string
 }
 
-# ---------------------------------------------------------------------------------------------------------------------
-# OPTIONAL PARAMETERS
-# These variables have defaults, but may be overridden by the operator.
-# ---------------------------------------------------------------------------------------------------------------------
+# Optional parameters
 
 variable "name" {
   description = "Name for the load balancer forwarding rule and prefix for supporting resources."
