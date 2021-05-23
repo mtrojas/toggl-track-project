@@ -1,8 +1,16 @@
+# Configure the GCP connection
+
 provider "google" {
-  project = var.project
   region  = var.region
-  zone    = var.zone
+  project = var.project
 }
+
+provider "google-beta" {
+  region  = var.region
+  project = var.project
+}
+
+# Configure the remote backend
 
 terraform {
   backend "gcs" {
@@ -11,7 +19,4 @@ terraform {
 
   }
 }
-
-
-
 
