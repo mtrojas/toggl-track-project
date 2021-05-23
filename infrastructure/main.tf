@@ -140,7 +140,7 @@ resource "google_compute_health_check" "default" {
 resource "google_storage_bucket" "static" {
   project = var.project
 
-  name          = "${var.name}-bucket-123456"
+  name          = "${var.name}-bucket-1234567"
   location      = var.static_content_bucket_location
   storage_class = "MULTI_REGIONAL"
 
@@ -169,7 +169,7 @@ resource "google_compute_backend_bucket" "static" {
 }
 
 # ------------------------------------------------------------------------------
-# UPLOAD SAMPLE CONTENT WITH PUBLIC READ ACCESS
+# UPLOAD STATIC CONTENT WITH PUBLIC READ ACCESS
 # ------------------------------------------------------------------------------
 
 resource "google_storage_default_object_acl" "website_acl" {
@@ -178,9 +178,18 @@ resource "google_storage_default_object_acl" "website_acl" {
 }
 
 resource "google_storage_bucket_object" "index" {
-  name    = "index.html"
-  content = "Hello, World!"
-  bucket  = google_storage_bucket.static.name
+  name   = "index.html"
+  source = "../app/public/index.html"
+  bucket = google_storage_bucket.static.name
+
+  # We have to depend on the ACL because otherwise the ACL could get created after the object
+  depends_on = [google_storage_default_object_acl.website_acl]
+}
+
+resource "google_storage_bucket_object" "js" {
+  name   = "main.js"
+  source = "../app/public/main.js"
+  bucket = google_storage_bucket.static.name
 
   # We have to depend on the ACL because otherwise the ACL could get created after the object
   depends_on = [google_storage_default_object_acl.website_acl]
